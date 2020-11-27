@@ -8,9 +8,19 @@ export type User = {
 
 @Injectable()
 export class UsersService {
-  private readonly users: User[] = [];
+  private readonly users: User[] = [
+    // {
+    //   id: 1,
+    //   username: 'oximon',
+    //   password: '123456',
+    // },
+  ];
 
   async findOne(username: string): Promise<User | undefined> {
     return this.users.find((user) => user.username === username);
+  }
+
+  async createUser(user: User) {
+    this.users.push(user);
   }
 }
