@@ -8,7 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
-import { ProductService } from './dto/product.service';
+import { ProductService } from './product.service';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './interfaces/product.interface';
 
