@@ -10,7 +10,8 @@ import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
-import { User, UsersService } from './users/users.service';
+import { UsersService } from './users/users.service';
+import { User } from './users/schemas/user.schema';
 
 @Controller()
 export class AppController {
@@ -26,8 +27,9 @@ export class AppController {
   }
 
   @Post('auth/signup')
-  async createUser(@Body() user: User) {
+  async createUser(@Body() user: User): Promise<string> {
     this.userService.createUser(user);
+    return 'Пользователь успешно создан';
   }
 
   @UseGuards(LocalAuthGuard)
@@ -39,6 +41,8 @@ export class AppController {
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
+    console.log(req.user);
+
     return req.user;
   }
 }
