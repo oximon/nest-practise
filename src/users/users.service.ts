@@ -12,11 +12,11 @@ export class UsersService {
   }
 
   async createUser(user: User): Promise<string> {
-    // const candidate = this.userModel.findOne({ username: user.username });
+    const candidate = await this.userModel.findOne({ username: user.username });
 
-    // if (candidate) {
-    //   throw new Error('Пользователь с таким именем уже существует');
-    // }
+    if (candidate) {
+      throw new Error('Пользователь с таким именем уже существует');
+    }
 
     const hashPassword = await bcrypt.hash(user.password, 12);
 

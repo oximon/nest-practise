@@ -11,9 +11,7 @@ import { UsersModule } from './users/users.module';
     ProductModule,
     AuthModule,
     UsersModule,
-    MongooseModule.forRoot(
-      'mongodb+srv://oximon:1q2q3q@cluster0.42lma.mongodb.net/test?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forRoot('mongodb://localhost:27017/products'),
   ],
   controllers: [AppController],
   providers: [AppService],
